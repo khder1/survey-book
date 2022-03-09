@@ -1,0 +1,122 @@
+body{
+    background-image: url("https://cdn.pixabay.com/photo/2015/03/11/15/24/nebula-668783__340.jpg");
+    background-size: auto;
+    background-attachment: fixed;
+}
+#h2 {
+ text-align: right;
+}
+
+input {
+    padding: 10px;
+    text-align: right;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: #E7E7E7;
+    width: 70%;
+    height: 170px;
+    margin: 10px 0;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.header {
+    background-color: #043C63;
+    width: 100%;
+    height: auto;
+    padding: 12px 0px;
+    text-align: center;
+    font-size: 18px;
+    color: #FFFFFF;
+    border-radius: 9px 9px 0 0;
+}
+
+.head {
+    margin-bottom: 6px;
+    padding: 0 6px;
+    line-height: 26px;
+}
+
+.body {
+    background-color: #E7E7E7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+    padding: 10px 6px;
+    text-align: center;
+    color: #043C63;
+}
+
+.label {
+    background-color: #E7E7E7;
+    padding: 6px 20px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #043C63;
+}
+
+.inputContainer {
+    background-color: #E7E7E7;
+    width: 100%;
+    margin: 15px 5px auto auto;
+    text-align: center;
+}
+
+.input {
+    background-color: #E7E7E7;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 80%;
+    height: auto;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 2px solid gray;
+    border-radius: 10px;
+    color: #043C63;
+}
+
+.inputContainer > .input {
+    width: 40%;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    color: #043C63;
+}
+
+.button {
+    background-color: #E7E7E7;
+    width: 40%;
+    margin: 10px 4px;
+    padding: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #043C63;
+}
+
+.buttons > .button {
+    font-size: 14px;
+}
+.button:hover{
+    background-color: #285F87;
+    zoom: 111%;
+    color: white;
+}
