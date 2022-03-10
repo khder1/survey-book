@@ -60,7 +60,8 @@
                 <% var auth = authors.filter(author => {author.reader_id == reader.reader_id}) %>
                 <tr>
                     <td rowspan=<% auth.length %> >
-                        <%= reader.birth %>
+                        <% var date = new Date(reader.birth); %>
+                        <%= date.getFullYear(); %>
                     </td>
                     <td rowspan=<% auth.length %>>
                         <%= reader.city %>
@@ -88,6 +89,7 @@
         </table>
       
     </div>
+    
 </body>
 
 </html>
