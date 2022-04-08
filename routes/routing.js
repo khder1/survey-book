@@ -1,14 +1,10 @@
 const express = require('express');
 const { route } = require('express/lib/application');
 const mysql = require('mysql');
-var db=require('../database');
+var db = require('../database');
 const router = express.Router();
 
-const db1 = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    charset: 'utf8_general_ci',
-});
+
 
 
 
@@ -20,7 +16,7 @@ router.route('/').get((req, res) => {
 router.route('/createdb').get((req, res) => {
 
     // Connect
-    db1.connect((err) => {
+    db.connect((err) => {
         if (err) {
             console.log('err = ', err)
             throw err;
@@ -31,12 +27,12 @@ router.route('/createdb').get((req, res) => {
     let sql = 'CREATE DATABASE survey character set UTF8 collate utf8_general_ci';
     // 
 
-    db1.query(sql, (err, result) => {
+    db.query(sql, (err, result) => {
         if (err) throw err;
         console.log(result);
         res.send('Database created...');
     });
-    // db1.destroy();
+    // db.destroy();
 });
 
 
