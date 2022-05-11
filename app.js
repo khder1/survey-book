@@ -11,12 +11,12 @@ const bodyParser = require('body-parser')
 const DBURL = process.env.MONGO_URL;
 // Connect to MongoDB
 mongoose
-  .connect(
-    'mongodb+srv://m001-student:m001-mongodb-basics@sandbox.abdnl.mongodb.net/survey?retryWrites=true&w=majority',
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+    .connect(
+        'mongodb+srv://m001-student:m001-mongodb-basics@sandbox.abdnl.mongodb.net/survey?retryWrites=true&w=majority',
+        { useNewUrlParser: true, useUnifiedTopology: true }
+    )
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
 
 app.use(bodyParser.json());
 
@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 })
 // Handling request
 app.post('/request', (req, res) => {
-    
+
     // console.log(req.body)
 
     let subjects = req.body.data.subjects;
@@ -85,25 +85,26 @@ app.post('/request', (req, res) => {
                 console.log(result3);
             })
         })
-        res.render('index2',{'msg':'success'})
+        res.render('index2', { 'msg': 'success' })
     })
 })
 
 app.get('/get-all-data', (req, res) => {
     Reader.find({}, (err, readers) => {
-        if(err) throw err
+        if (err) throw err
         Author.find({}, (err, authors) => {
-            if(err) throw err
+            if (err) throw err
             Subject.find({}, (err, subjects) => {
-                if(err) throw err
-                console.log({readers, authors, subjects})
-                res.render('index3', {readers, authors, subjects})
+                if (err) throw err
+                console.log({ readers, authors, subjects })
+                res.render('index3', { readers, authors, subjects })
             })
         })
-        
-        
+
+
     })
 })
+
 
 
 // Server Setup
