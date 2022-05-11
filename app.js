@@ -12,7 +12,7 @@ const DBURL = process.env.MONGO_URL;
 // Connect to MongoDB
 mongoose
   .connect(
-    'mongodb://localhost:27017/survey',
+    'mongodb+srv://m001-student:m001-mongodb-basics@sandbox.abdnl.mongodb.net/survey?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log('MongoDB Connected'))
