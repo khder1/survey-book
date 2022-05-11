@@ -34,7 +34,7 @@
                         سنة الميلاد
                     </label>
                     <div class="inputContainer">
-                        <input type="text" placeholder="yyyy-mm-dd" class="input" id="from-datepicker" required>
+                        <input type="number" placeholder="yyyy" class="input" id="from-datepicker" required>
                     </div>
                 </div>
                 <div class="body">
@@ -209,11 +209,7 @@
                 }
             }
         }
-        $(document).ready(function () {
-            $("#from-datepicker").datepicker({
-                format: 'yyyy-mm-dd' //can also use format: 'dd-mm-yyyy'     
-            });
-        });
+        
         $(document).ready(() => {
             $("#submit").click(() => {
                 birth = document.getElementById('from-datepicker').value;

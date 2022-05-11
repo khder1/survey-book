@@ -7,7 +7,6 @@ const router = express.Router();
 
 
 
-
 //home page
 router.route('/').get((req, res) => {
     res.render('index')

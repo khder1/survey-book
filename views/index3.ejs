@@ -57,18 +57,18 @@
             </tr>
     
             <% readers.forEach(reader => { %>
-                <% var auth = authors.filter(author => {author.reader_id == reader.reader_id}) %>
+                <% var auth = authors.filter(author => {author.reader_id == reader._id}) %>
                 <tr>
                     <td rowspan=<% auth.length %> >
-                        <% var date = new Date(reader.birth); %>
-                        <%= date.getFullYear(); %>
+                        
+                        <%= reader.birth %>
                     </td>
                     <td rowspan=<% auth.length %>>
                         <%= reader.city %>
                     </td>
                     <td>
                         <% authors.forEach(author => { %>
-                            <% if(reader.reader_id==author.reader_id){ %>
+                            <% if(reader._id==author.reader_id){ %>
                                     <%= author.author_name %>
                                     <br>
                                     <% } %>
@@ -76,7 +76,7 @@
                                 </td>
                                 <td>
                     <% subjects.forEach(subject => { %>
-                        <% if(reader.reader_id==subject.reader_id){ %>
+                        <% if(reader._id==subject.reader_id){ %>
                                 <%= subject.subject_name %>
                                 <br>
                                 <% } %>
