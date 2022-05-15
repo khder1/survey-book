@@ -16,10 +16,12 @@
             padding: 10px;
             margin: 5px;
             border-bottom: 2px solid black;
+            width: auto;
         }
         td{
             padding: 10px;
             margin: 5px;
+            width: auto;
         }
         table{
             border: black solid 2px;
@@ -57,31 +59,21 @@
             </tr>
     
             <% readers.forEach(reader => { %>
-                <% var auth = authors.filter(author => {author.reader_id == reader._id}) %>
+                
                 <tr>
-                    <td rowspan=<% auth.length %> >
-                        
+                    <td>
                         <%= reader.birth %>
                     </td>
-                    <td rowspan=<% auth.length %>>
+                    <td>
                         <%= reader.city %>
                     </td>
                     <td>
-                        <% authors.forEach(author => { %>
-                            <% if(reader._id==author.reader_id){ %>
-                                    <%= author.author_name %>
-                                    <br>
-                                    <% } %>
-                                    <% }) %>
-                                </td>
-                                <td>
-                    <% subjects.forEach(subject => { %>
-                        <% if(reader._id==subject.reader_id){ %>
-                                <%= subject.subject_name %>
-                                <br>
-                                <% } %>
-                                <% }) %>
-                            </td>
+                        <%= reader.author %>
+                    </td>
+                    <td>
+                        <%= reader.subject %>
+                    </td>
+                        
                 </tr>
         
            <% }) %>

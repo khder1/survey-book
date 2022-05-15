@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+        </script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel = "icon" href = "https://i.ibb.co/Dfy2RXt/download-removebg-preview.png" type = "image/x-icon">
+    
+    
+
+    <title> Books Survey </title>
+</head>
+
+<body>
+    <form id="form" action="/request" method="post">
+        <div class="flex-container">
+            <header class="header" style="border-radius: 9px; width: 80%; font-size: 28px;">
+                استمارة لجمع البيانات حول كتب تمت قراءتها
+            </header>
+            <div class="card" style="height: auto;">
+                <header class="header">
+                    المعلومات الشخصية
+                </header>
+                <div class="body">
+                    <label class="label" for="from-datepicker">
+                        سنة الميلاد
+                    </label>
+                    <div class="inputContainer">
+                        <input type="number" name="birth" min="1933" max="2010" placeholder="yyyy" class="input" id="from-datepicker" required>
+                    </div>
+                </div>
+                <div class="body">
+                    <label class="label" for="city">
+                        المدينة
+                    </label>
+                    <div class="inputContainer">
+                        <input class="input" name="city" type="text" size="40px" id="city" required>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="height: auto;">
+                <header class="header">
+                    ما هي المرحلة التعليمية التي وصلت لها ؟
+                </header>
+                <div class="body">
+                    <div class="inputContainer">
+                        <select class="input" style="font-size: 16px;" id="degree">
+                            <option value="not studed">
+                                غير متعلم بشكل رسمي
+                            </option>
+                            <option value="elementary">
+                                ابتدائي
+                            </option>
+                            <option value="intermediate">
+                                إعدادي
+                            </option>
+                            <option value="secondary">
+                                ثانوي
+                            </option>
+                            <option value="academic">
+                                جامعي أو معهد
+                            </option>
+                            <option value="postgraduate">
+                                دراسات عليا
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="height: auto;">
+                <header class="header">
+                    <div class="head">
+                        ما هي المواضيع الفكرية أو القضايا التي حازت على اهتمامك في فترات عمرية مختلفة ؟
+                    </div>
+                    <div>ما هي المواضيع الفكرية..... (مثلا: كنت مهتماً بنظرية التطور في فترة شبابي، ولاحقاً صرت أقرأ عن النظريات الاجتماعية عندما وجدت وظيفة .... الخ)</div>
+                </header>
+                <div class="buttons" style="margin: auto;">
+                    <textarea name="subject" id="subject" cols="30" rows="10"></textarea>
+                </div>
+                
+            </div>
+
+            <div class="card" style="height: auto;">
+                <header class="header">
+                    <div class="head">
+                        من هم أهم المؤلفين أو الكتب التي حازت على اهتمامك خلال فترات عمرية مختلفة ؟
+                    </div>
+                    <div>(مثلاً: كنت أقرأ لنيتشة عندما كنت في العشرينات من عمري، كذلك كنت أقرأ لعدة كتاب على سبيل المثال: الماغوط ...الخ)</div>
+                </header>
+                <div class="buttons" style="margin: auto;">
+                   <textarea name="author" id="author" cols="30" rows="10"></textarea>
+                </div>
+                
+            </div>
+
+            
+
+            <div class="buttons">
+                <input type="submit" value="submit" class="button">
+                <!-- <button id="submit" type="button" class="button" name="n4">
+                    إرسال المعلومات
+                </button> -->
+               
+            </div>
+        </div>
+    </form>
+    <script>
+        var l1 = true
+        var l2 = true
+        var birth = '', city='', subject='', author='', degree='';
+        var data = { birth: '', city: '', subject: '', author: '', degree: '' }
+        
+        // addHTML1 = () => {
+        //     l1 = false
+        //     document.getElementById('btn1').disabled = true;
+        //     document.getElementById('div1').innerHTML =
+        //         `
+        //         <div class="body">
+        //             <textarea class="input" id="subject"></textarea>
+        //         </div>
+        //         <div class="buttons" style="margin: auto;">
+        //             <button class="button" type="button" onclick="Cancel1()">X</button>
+        //             <button class="button" id="but1" type="button" onclick="Done1()">تم</button>
+        //         </div>
+        //         `
+        //     document.getElementById('submit').disabled = true
+        //     document.getElementById('reset').disabled = true
+        // }
+        // Cancel1 = () => {
+        //     document.getElementById('div1').innerHTML = null
+        //     document.getElementById('btn1').disabled = false
+        //     l1 = true
+        //     if (l2) {
+        //         document.getElementById('submit').disabled = false
+        //         document.getElementById('reset').disabled = false
+        //     }
+        // }
+        // Done1 = () => {
+        //     l1 = true
+        //     var subject = document.getElementById('subject')
+        //     if (!subject.value) {
+        //         alert('رجاءً أدخل المعلومات المطلوبة')
+        //     } else {
+        //         subject.disabled = true
+        //         subjects.push(subject.value)
+        //         document.getElementById(`but1`).disabled = true
+        //         document.getElementById('btn1').disabled = false
+        //         //console.log(subjects)
+        //         if (l2) {
+        //             document.getElementById('submit').disabled = false
+        //             document.getElementById('reset').disabled = false
+        //         }
+        //     }
+        // }
+        // addHTML2 = () => {
+        //     l2 = false
+        //     document.getElementById('btn2').disabled = true;
+        //     document.getElementById('div2').innerHTML =
+        //         `
+        //         <div class="body">
+        //             <textarea class="input" id="author"></textarea>
+        //         </div>
+        //         <div class="buttons" style="margin: auto;">
+        //             <button class="button" type="button" onclick="Cancel2()">X</button>
+        //             <button class="button" id="but2" type="button" onclick="Done2()">تم</button>
+        //         </div>
+        //         `
+        //     document.getElementById('submit').disabled = true
+        //     document.getElementById('reset').disabled = true
+        // }
+        // Cancel2 = () => {
+        //     document.getElementById('div2').innerHTML = null
+        //     document.getElementById('btn2').disabled = false
+        //     l2 = true
+        //     if (l1) {
+        //         document.getElementById('submit').disabled = false
+        //         document.getElementById('reset').disabled = false
+        //     }
+        // }
+        // Done2 = () => {
+        //     l2 = true
+        //     var author = document.getElementById('author')
+        //     if (!author.value) {
+        //         alert('رجاءً أدخل المعلومات المطلوبة')
+        //     } else {
+        //         author.disabled = true
+        //         authors.push(author.value)
+        //         document.getElementById(`but2`).disabled = true
+        //         document.getElementById('btn2').disabled = false
+        //         //console.log(authors)
+        //         if (l1) {
+        //             document.getElementById('submit').disabled = false
+        //             document.getElementById('reset').disabled = false
+        //         }
+        //     }
+        // }
+        
+        $(document).ready(() => {
+            $("#submit").click(() => {
+                birth = document.getElementById('from-datepicker').value;
+                city = document.getElementById('city').value;
+                author = document.getElementById('author')
+                subject = document.getElementById('subject')
+                degree = document.getElementById('degree').value;
+                data = { birth, city, subject, author, degree }
+                // console.log(`data = ${data.authors}`)
+                // console.log(data)
+                $.post('/request',
+                    {
+                        data: data
+                    },
+                    (info, status) => {
+                        console.log(status);
+                        console.log(info);
+                    });
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

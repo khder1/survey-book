@@ -6,6 +6,8 @@ const  {str, date} = require('./datatypes');
 const readerSchema = new mongoose.Schema({
     birth: date,
     city: str,
+    author: str,
+    subject: str,
     degree: str 
 });
 

@@ -2,13 +2,13 @@ const express = require("express")
 const path = require("path");
 //const db = require('./database');
 const app = express();
-const Author = require('./models/Author')
+//const Author = require('./models/Author')
 const Reader = require('./models/Reader')
-const Subject = require('./models/Subject')
+//const Subject = require('./models/Subject')
 const port = process.env.PORT || 5000;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
-const DBURL = process.env.MONGO_URL;
+//const DBURL = process.env.MONGO_URL;
 // Connect to MongoDB
 mongoose
     .connect(
@@ -39,52 +39,33 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, 'public')))
+//app.use(express.static(path.join(__dirname, 'public')))
 
 //app.use('/', require('./routes/routing'))
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index4')
 })
 // Handling request
 app.post('/request', (req, res) => {
 
     // console.log(req.body)
 
-    let subjects = req.body.data.subjects;
-    let authors = req.body.data.authors;
+    
     // console.log(subjects)
     // console.log(authors)
     // console.log(birth)
     // console.log(degree)
     const reader = new Reader({
-        birth: req.body.data.birth,
-        city: req.body.data.city,
-        degree: req.body.data.degree
+        birth: req.body.birth,
+        city: req.body.city,
+        author: req.body.author,
+        subject: req.body.subject,
+        degree: req.body.degree 
     })
-    reader.save((err, result1) => {
+    reader.save((err, result) => {
         if (err) throw err;
-        console.log(result1);
-        subjects.forEach(element => {
-            const subject = new Subject({
-                subject_name: element,
-                reader_id: reader._id
-            })
-            subject.save((err, result2) => {
-                if (err) throw err;
-                console.log(result2);
-            })
-        })
-        authors.forEach(element => {
-            const author = new Author({
-                author_name: element,
-                reader_id: reader._id
-            })
-            author.save((err, result3) => {
-                if (err) throw err;
-                console.log(result3);
-            })
-        })
+        console.log(result);
         res.render('index2', { 'msg': 'success' })
     })
 })
@@ -92,14 +73,9 @@ app.post('/request', (req, res) => {
 app.get('/get-all-data', (req, res) => {
     Reader.find({}, (err, readers) => {
         if (err) throw err
-        Author.find({}, (err, authors) => {
-            if (err) throw err
-            Subject.find({}, (err, subjects) => {
-                if (err) throw err
-                console.log({ readers, authors, subjects })
-                res.render('index3', { readers, authors, subjects })
-            })
-        })
+        res.render('index3', { readers})
+         
+        
 
 
     })
