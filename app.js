@@ -75,8 +75,6 @@ app.get('/get-all-data', (req, res) => {
         if (err) throw err
         res.render('index3', { readers})
          
-        
-
 
     })
 })
